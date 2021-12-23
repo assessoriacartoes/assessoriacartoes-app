@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Breadcrumb } from 'antd';
 import * as S from './styles'
 
 const { Header, Content, Footer } = Layout;
