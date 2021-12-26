@@ -1,64 +1,75 @@
 import React from 'react';
 import './index.css';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import * as S from './styles'
+import { Typography } from 'antd';
+import axios from 'axios';
+import { toast } from 'react-toastify'
+import { useNavigate } from "react-router-dom"
 
-export default function LoginForm() {
-  function onFinish(e: React.FormEvent) {
-    console.log('Received values of form: ', e);
+export type LoginForm = {
+  email: string,
+  password: string,
+}
+
+export default function Login() {
+  const navigate = useNavigate();
+
+  const onFinish = async (values: LoginForm) => {
+
+    await axios.post(`api`,).then(function (response) {
+      navigate("/")
+    })
+      .catch(function (error) {
+        toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
+      });
+
+  };
+
+  const { Title } = Typography;
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
   };
 
   return (
     <S.Container>
+      <Title level={3}>Bem-vindo(a)!</Title>
+      <p>Faça login para acessar sua conta</p>
       <Form
-        name="normal_login"
-        className="login-form"
-        initialValues={{
-          remember: true,
-        }}
-        onFinish={(e) => onFinish(e)}
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
       >
         <Form.Item
           name="email"
-          rules={[
-            {
-              required: true,
-              message: 'Insira seu E-mail',
-            },
-          ]}
+          style={{ display: "flex", justifyContent: "center" }}
+          rules={[{ required: true, message: 'Insira seu E-mail' }]}
         >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="E-mail" type="email" />
+          <Input placeholder="E-mail" />
         </Form.Item>
+
         <Form.Item
           name="password"
-          rules={[
-            {
-              required: true,
-              message: 'Insira sua Senha!',
-            },
-          ]}
+          style={{ display: "flex", justifyContent: "center" }}
+          rules={[{ required: true, message: 'Insira sua senha' }]}
         >
-          <Input
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            type="password"
-            placeholder="Senha"
-          />
-        </Form.Item>
-        <Form.Item>
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Lembrar-me</Checkbox>
-
-          </Form.Item>
-
-          <a className="login-form-forgot" href="/#">
-            Esqueci minha senha
-          </a>
+          <Input.Password placeholder="Senha" />
         </Form.Item>
 
-        <Form.Item style={{ marginLeft: "auto" }}>
-          <Button style={{ borderRadius: '4px' }} type="primary" htmlType="submit" className="login-form-button">
-            Entrar
+        <Form.Item name="remember" valuePropName="checked" >
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+
+        <Form.Item
+          style={{ display: "flex", justifyContent: "center", borderRadius: '2px' }}
+        >
+          <Button type="primary" htmlType="submit" block>
+            Login
           </Button>
         </Form.Item>
       </Form>

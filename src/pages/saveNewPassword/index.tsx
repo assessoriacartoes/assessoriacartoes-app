@@ -3,6 +3,9 @@ import { LockOutlined } from '@ant-design/icons';
 import * as S from './styles'
 import { toast } from 'react-toastify';
 import './index.css';
+import { Typography } from 'antd';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom"
 
 export type NewPassword = {
   password: string;
@@ -10,11 +13,19 @@ export type NewPassword = {
 }
 
 export default function SaveNewPassword() {
+  const { Title } = Typography;
+  const navigate = useNavigate();
 
-  function onFinish({ password, password2 }: NewPassword) {
-    if (password === password2) {
+  async function onFinish(value: NewPassword) {
+    if (value.password === value.password2) {
       toast.success("opa")
-      return
+      await axios.post(`api`, value).then(function (response) {
+        toast.success(`Nova senha salva com sucesso!`)
+        navigate("/login")
+      })
+        .catch(function (error) {
+          toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
+        });
     }
     toast.error("Inrsira Senhas iguais")
 
@@ -22,6 +33,10 @@ export default function SaveNewPassword() {
 
   return (
     <S.Container>
+      <S.ContainerTitle>
+        <Title level={3}>Insira sua nova senha</Title>
+        <br />
+      </S.ContainerTitle>
       <Form
         name="normal_login"
         className="login-form"

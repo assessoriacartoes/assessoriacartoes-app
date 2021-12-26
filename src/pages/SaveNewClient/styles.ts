@@ -29,3 +29,12 @@ export const HideBar = styled.div`
   transform: translateY(-54px);
   background-color: white;
 `
+export const ContainerTitle = styled.div`
+  text-align: center;
+  margin-bottom: 30px
+`
+export const FormContainer = styled.div`
+  .ant-form-item-label{
+    text-align: center;
+  }
+`
