@@ -5,7 +5,7 @@ import * as S from './styles'
 import { Typography } from 'antd';
 import axios from 'axios';
 import { toast } from 'react-toastify'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export type LoginForm = {
   email: string,
@@ -60,11 +60,12 @@ export default function Login() {
         >
           <Input.Password placeholder="Senha" />
         </Form.Item>
-
-        <Form.Item name="remember" valuePropName="checked" >
-          <Checkbox>Remember me</Checkbox>
+        <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Mantenha-me conectado</Checkbox>
         </Form.Item>
-
+        <Form.Item>
+          <Link className="login-form-forgot" to="/esqueci-minha-senha">Esqueci minha senha</Link>
+        </Form.Item>
         <Form.Item
           style={{ display: "flex", justifyContent: "center", borderRadius: '2px' }}
         >

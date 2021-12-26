@@ -24,3 +24,9 @@ export const HideBar = styled.div`
   transform: translateY(-54px);
   background-color: white;
 `
+export const MenuContainer = styled.div`
+width: fit-content;
+  span{
+    margin-left: 20px;
+  }
+`

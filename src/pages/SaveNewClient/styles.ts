@@ -31,10 +31,16 @@ export const HideBar = styled.div`
 `
 export const ContainerTitle = styled.div`
   text-align: center;
-  margin-bottom: 30px
+  margin-bottom: 30px;
 `
 export const FormContainer = styled.div`
   .ant-form-item-label{
     text-align: center;
+  }
+`
+
+export const MenuContainer = styled.div`
+  span{
+    margin - left: 20px;
   }
 `

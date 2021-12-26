@@ -6,6 +6,7 @@ import { Typography } from 'antd';
 import axios from 'axios';
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
 const layout = {
   labelCol: {
@@ -45,7 +46,10 @@ export default function SaveNewClient() {
 
   return (
     <Layout className="layout">
-      <Header style={{ backgroundColor: "white" }}>
+      <Header style={{ backgroundColor: "white", display: "flex" }}>
+        < S.MenuContainer >
+          <span><Link to="/" > Home </Link></span >
+        </S.MenuContainer>
         <S.ContainerImage>
           <img src="assessoria.png" alt="logo" />
         </S.ContainerImage>

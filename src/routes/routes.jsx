@@ -13,8 +13,8 @@ export default function RoutesConfig() {
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/login" element={<LoginForm />} />
                 <Route exact path="/esqueci-minha-senha" element={<ForgotPassword />} />
-                <Route exact path="/cadastrar-minha-senha" element={<SaveNewPassword />} />
-                <Route exact path="/cadatrar-cliente" element={<SaveNewClient />} />
+                <Route exact path="/cadastrar-nova-senha" element={<SaveNewPassword />} />
+                <Route exact path="/cadastro-de-cliente" element={<SaveNewClient />} />
             </Routes>
         </BrowserRouter>
     )
