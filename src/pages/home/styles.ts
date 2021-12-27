@@ -3,11 +3,13 @@ import styled from 'styled-components'
 export const SiteLayoutContent = styled.div`
   min-height: 280px;
   background: #fff;
+  height: 100vh;
 }
 `
 
 export const ContainerImage = styled.div`
   margin-right: auto;
+  margin-left: 10%;
   width: fit-content;
   img{
     width: 160px;
@@ -24,6 +26,7 @@ export const HideBar = styled.div`
   background-color: white;
 `
 export const MenuContainer = styled.div`
+  margin-right: 10%;
 width: fit-content;
   span{
     margin-left: 20px;

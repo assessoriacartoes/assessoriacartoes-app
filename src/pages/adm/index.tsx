@@ -56,11 +56,8 @@ export default function Adm() {
           alignItems: "center"
         }}>
         <S.ContainerImage>
-          <img src="cliente.png" alt="logo" />
+          <img src="assessoria.png" alt="logo" />
         </S.ContainerImage>
-        < S.MenuContainer >
-          <span><Link to="/" > Home </Link></span >
-        </S.MenuContainer>
       </Header>
       <Content style={{ backgroundColor: "white", padding: '50px 50px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
@@ -127,8 +124,7 @@ export default function Adm() {
         <Table></Table>
       </Content>
       <Footer style={{
-        textAlign: 'center', bottom: '0', left: '0', right: '0', fontSize: "1rem",
-        fontWeight: "700"
+        textAlign: 'center', bottom: '0', left: '0', right: '0', fontSize: "1rem"
       }}>Assessoria Cartões © {year.getFullYear()}</Footer>
     </Layout>
   )

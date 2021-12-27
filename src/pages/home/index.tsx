@@ -16,10 +16,10 @@ export default function Home() {
     async function getPowerBi() {
       await axios.get(`api`).then(function (response) {
         // setData(response)
-        toast.success(`Cliente criado com sucesso`)
+        // toast.success(`Cliente criado com sucesso`)
       })
         .catch(function (error) {
-          toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
+          // toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
         });
     }
     getPowerBi()
@@ -53,7 +53,6 @@ export default function Home() {
       <Footer
         style={{
           textAlign: 'center',
-          position: "absolute",
           bottom: '-10.2%',
           left: '0',
           right: '0',

@@ -13,7 +13,8 @@ export const SiteLayoutContent = styled.div`
 
 
 export const ContainerImage = styled.div`
-  margin-right: auto;
+ margin-right: auto;
+  margin-left: 10%;
   width: fit-content;
   img{
     width: 160px;
