@@ -50,17 +50,6 @@ export default function Home() {
           {/* <S.HideBar /> */}
         </S.SiteLayoutContent>
       </Content>
-      <Footer
-        style={{
-          textAlign: 'center',
-          bottom: '-10.2%',
-          left: '0',
-          right: '0',
-          fontSize: "1rem",
-        }}
-      >
-        Assessoria Cartões © {year.getFullYear()}
-      </Footer>
     </Layout>
   )
 }
