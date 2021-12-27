@@ -7,7 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom';
-
+import Table from '../../components/Table'
 const layout = {
   labelCol: {
     span: 8,
@@ -48,19 +48,21 @@ export default function Adm() {
     <Layout className="layout">
       <Header
         style={{
-          backgroundColor: "white",
+          backgroundColor: "#f0f2f5",
           display: 'flex',
           height: "auto",
-          maxHeight: "80px"
+          maxHeight: "60px",
+          justifyContent: "center",
+          alignItems: "center"
         }}>
         <S.ContainerImage>
-          <img src="cliente.jpeg" alt="logo" />
+          <img src="cliente.png" alt="logo" />
         </S.ContainerImage>
         < S.MenuContainer >
           <span><Link to="/" > Home </Link></span >
         </S.MenuContainer>
       </Header>
-      <Content style={{ padding: '50px 50px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: "100vh" }}>
+      <Content style={{ backgroundColor: "white", padding: '50px 50px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
         </Breadcrumb>
         <S.SiteLayoutContent>
@@ -122,9 +124,10 @@ export default function Adm() {
             </Form>
           </S.FormContainer>
         </S.SiteLayoutContent>
+        <Table></Table>
       </Content>
       <Footer style={{
-        textAlign: 'center', position: 'fixed', bottom: '0', left: '0', right: '0', fontSize: "1rem",
+        textAlign: 'center', bottom: '0', left: '0', right: '0', fontSize: "1rem",
         fontWeight: "700"
       }}>Assessoria Cartões © {year.getFullYear()}</Footer>
     </Layout>

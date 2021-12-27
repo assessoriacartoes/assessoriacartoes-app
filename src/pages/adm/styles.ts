@@ -16,7 +16,7 @@ export const ContainerImage = styled.div`
   margin-right: auto;
   width: fit-content;
   img{
-    width: 200px;
+    width: 160px;
   }
 `
 export const Iframe = styled.iframe`

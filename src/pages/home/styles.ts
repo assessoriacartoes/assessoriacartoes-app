@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const SiteLayoutContent = styled.div`
   min-height: 280px;
-  padding: 24px;
   background: #fff;
 }
 `
@@ -11,7 +10,7 @@ export const ContainerImage = styled.div`
   margin-right: auto;
   width: fit-content;
   img{
-    width: 200px;
+    width: 160px;
   }
 `
 export const Iframe = styled.iframe`
@@ -28,7 +27,7 @@ export const MenuContainer = styled.div`
 width: fit-content;
   span{
     margin-left: 20px;
-        font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 700;
   }
 `

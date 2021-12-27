@@ -12,8 +12,8 @@ export default function RoutesConfig() {
             <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route exact path="/login" element={<LoginForm />} />
-                <Route exact path="/esqueci-minha-senha" element={<ForgotPassword />} />
-                <Route exact path="/cadastrar-nova-senha" element={<SaveNewPassword />} />
+                {/* <Route exact path="/esqueci-minha-senha" element={<ForgotPassword />} /> */}
+                {/* <Route exact path="/cadastrar-nova-senha" element={<SaveNewPassword />} /> */}
                 <Route exact path="/admin" element={<Adm />} />
             </Routes>
         </BrowserRouter>

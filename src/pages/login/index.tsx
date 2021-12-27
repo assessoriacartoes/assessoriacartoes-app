@@ -60,12 +60,12 @@ export default function Login() {
         >
           <Input.Password placeholder="Senha" />
         </Form.Item>
+
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Mantenha-me conectado</Checkbox>
         </Form.Item>
-        <Form.Item>
-          <Link className="login-form-forgot" to="/esqueci-minha-senha">Esqueci minha senha</Link>
-        </Form.Item>
+        <br />
+        <br />
         <Form.Item
           style={{ display: "flex", justifyContent: "center", borderRadius: '2px' }}
         >
