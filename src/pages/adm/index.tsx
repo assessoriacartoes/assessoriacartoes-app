@@ -28,7 +28,7 @@ export type SaveNewClientForm = {
   ClientImage: string
 }
 
-export default function SaveNewClient() {
+export default function Adm() {
   const navigate = useNavigate();
 
   const year = new Date();
@@ -46,13 +46,19 @@ export default function SaveNewClient() {
 
   return (
     <Layout className="layout">
-      <Header style={{ backgroundColor: "white", display: "flex" }}>
+      <Header
+        style={{
+          backgroundColor: "white",
+          display: 'flex',
+          height: "auto",
+          maxHeight: "80px"
+        }}>
+        <S.ContainerImage>
+          <img src="cliente.jpeg" alt="logo" />
+        </S.ContainerImage>
         < S.MenuContainer >
           <span><Link to="/" > Home </Link></span >
         </S.MenuContainer>
-        <S.ContainerImage>
-          <img src="assessoria.png" alt="logo" />
-        </S.ContainerImage>
       </Header>
       <Content style={{ padding: '50px 50px', display: 'flex', justifyContent: 'center', alignItems: 'center', height: "100vh" }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
@@ -86,6 +92,13 @@ export default function SaveNewClient() {
                 <Input type="text" />
               </Form.Item>
               <Form.Item
+                name='conciliador'
+                label="Link Conciliador"
+                rules={[{ required: true, message: 'Por favor insira o Link Do Conciliador' }]}
+              >
+                <Input type="text" />
+              </Form.Item>
+              <Form.Item
                 name='clientImage'
                 label="Imagem Cliente"
                 rules={[{ required: true, message: 'Por favor insira uma imagem' }]}
@@ -110,7 +123,10 @@ export default function SaveNewClient() {
           </S.FormContainer>
         </S.SiteLayoutContent>
       </Content>
-      <Footer style={{ textAlign: 'center', position: 'fixed', bottom: '0', left: '0', right: '0' }}>e-Assessoria Financeira © {year.getFullYear()}</Footer>
+      <Footer style={{
+        textAlign: 'center', position: 'fixed', bottom: '0', left: '0', right: '0', fontSize: "1rem",
+        fontWeight: "700"
+      }}>Assessoria Cartões © {year.getFullYear()}</Footer>
     </Layout>
   )
 }

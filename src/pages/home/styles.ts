@@ -8,7 +8,7 @@ export const SiteLayoutContent = styled.div`
 `
 
 export const ContainerImage = styled.div`
-  margin-left: auto;
+  margin-right: auto;
   width: fit-content;
   img{
     width: 200px;
@@ -28,5 +28,7 @@ export const MenuContainer = styled.div`
 width: fit-content;
   span{
     margin-left: 20px;
+        font-size: 1rem;
+    font-weight: 700;
   }
 `

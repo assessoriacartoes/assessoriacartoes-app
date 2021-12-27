@@ -4,7 +4,7 @@ import Home from '../pages/home/index'
 import LoginForm from '../pages/login/index'
 import ForgotPassword from '../pages/forgotPassword/index'
 import SaveNewPassword from '../pages/saveNewPassword/index'
-import SaveNewClient from '../pages/SaveNewClient/index'
+import Adm from '../pages/adm/index'
 
 export default function RoutesConfig() {
     return (
@@ -14,7 +14,7 @@ export default function RoutesConfig() {
                 <Route exact path="/login" element={<LoginForm />} />
                 <Route exact path="/esqueci-minha-senha" element={<ForgotPassword />} />
                 <Route exact path="/cadastrar-nova-senha" element={<SaveNewPassword />} />
-                <Route exact path="/cadastro-de-cliente" element={<SaveNewClient />} />
+                <Route exact path="/admin" element={<Adm />} />
             </Routes>
         </BrowserRouter>
     )

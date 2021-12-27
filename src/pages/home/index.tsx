@@ -8,16 +8,19 @@ export default function Home() {
 
   return (
     <Layout className="layout" >
-      <Header style={{ backgroundColor: "white", display: 'flex' }}>
-        <S.MenuContainer>
-          <span><Link to="/">Home</Link></span>
-          <span><Link to="/login">login</Link></span>
-          <span><Link to="/cadastro-de-cliente">Cadastrar cliente</Link></span>
-          <span><Link to="/cadastrar-nova-senha">Cadastrar nova senha</Link></span>
-        </S.MenuContainer>
+      <Header
+        style={{
+          backgroundColor: "white",
+          display: 'flex',
+          height: "auto",
+          maxHeight: "80px"
+        }}>
         <S.ContainerImage>
-          <img src="assessoria.png" alt="logo" />
+          <img src="cliente.jpeg" alt="logo" />
         </S.ContainerImage>
+        <S.MenuContainer>
+          <span><Link to="/">CONCILIADOR</Link></span>
+        </S.MenuContainer>
       </Header>
       <Content style={{ padding: '0 50px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>
@@ -27,7 +30,19 @@ export default function Home() {
           {/* <S.HideBar /> */}
         </S.SiteLayoutContent>
       </Content>
-      <Footer style={{ textAlign: 'center', position: "fixed", bottom: '0', left: '0', right: '0' }}>e-Assessoria Financeira © {year.getFullYear()}</Footer>
+      <Footer
+        style={{
+          textAlign: 'center',
+          position: "fixed",
+          bottom: '0',
+          left: '0',
+          right: '0',
+          fontSize: "1rem",
+          fontWeight: "700"
+        }}
+      >
+        Assessoria Carrões © {year.getFullYear()}
+      </Footer>
     </Layout>
   )
 
