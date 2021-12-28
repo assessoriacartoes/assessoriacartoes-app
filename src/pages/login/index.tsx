@@ -16,6 +16,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const onFinish = async (values: LoginForm) => {
+    console.log("response", values)
 
     await axios.post(`api`,).then(function (response) {
       navigate("/")

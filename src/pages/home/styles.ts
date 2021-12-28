@@ -8,7 +8,7 @@ export const SiteLayoutContent = styled.div`
 `
 
 export const ContainerImage = styled.div`
-  margin-right: auto;
+  /* margin-right: auto; */
   margin-left: 10%;
   width: fit-content;
   img{
@@ -33,4 +33,12 @@ width: fit-content;
     font-size: 0.8rem;
     font-weight: 700;
   }
+`
+export const ContainerWord = styled.div`
+  margin-right: auto;
+  margin-left: auto;
+  width: fit-content;
+  font-weight: 700;
+  font-size: 24px;
+
 `

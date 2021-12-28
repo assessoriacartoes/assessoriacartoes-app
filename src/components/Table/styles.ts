@@ -41,9 +41,16 @@ export const SearchContainer = styled.form`
 
 export const DivTable = styled.div`
         height: 610px;
+        width: 90%;
         margin: 0 2rem 0 2rem;
     .ant-btn{
         margin: 2px;
         border-radius: 4px;
+    }
+
+    .ant-table-cell{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 `

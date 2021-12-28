@@ -11,20 +11,23 @@ export default function Home() {
   const [data, setData] = useState()
 
   const year = new Date();
+
   const powerBi = `https://app.powerbi.com/view?r=eyJrIjoiMjRmZDVlZDYtZDM0MS00ODI1LTgxZTYtYjc2YWVjYWIyYzFhIiwidCI6IjQ2NTg4OGU5LWQzMjUtNDc5MC05ZTU3LTE1NGVhOWJhMWYxYiJ9&pageName=ReportSection`
   useEffect(() => {
     async function getPowerBi() {
-      await axios.get(`api`).then(function (response) {
+      await axios.get(`http://212.1.214.170:5000/assessoria`).then(function (response) {
         // setData(response)
+        console.log("response", response)
         // toast.success(`Cliente criado com sucesso`)
       })
         .catch(function (error) {
+          console.log(error.response)
+
           // toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
         });
     }
     getPowerBi()
   }, [])
-
 
   return (
     <Layout className="layout" >
@@ -40,6 +43,9 @@ export default function Home() {
         <S.ContainerImage>
           <img src="cliente.png" alt="logo" />
         </S.ContainerImage>
+        <S.ContainerWord>
+          Análise de dados
+        </S.ContainerWord>
         <S.MenuContainer>
           <span><Link to="/">CONCILIADOR</Link></span>
         </S.MenuContainer>

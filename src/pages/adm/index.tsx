@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom';
 import Table from '../../components/Table'
+
 const layout = {
   labelCol: {
     span: 8,
@@ -123,9 +124,6 @@ export default function Adm() {
         </S.SiteLayoutContent>
         <Table></Table>
       </Content>
-      <Footer style={{
-        textAlign: 'center', bottom: '0', left: '0', right: '0', fontSize: "1rem"
-      }}>Assessoria Cartões © {year.getFullYear()}</Footer>
     </Layout>
   )
 }
