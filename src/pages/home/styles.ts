@@ -4,6 +4,10 @@ export const SiteLayoutContent = styled.div`
   min-height: 280px;
   background: #fff;
   height: 100vh;
+  iframe{
+    width: 100%;
+    height: 100vh;
+  }
 }
 `
 

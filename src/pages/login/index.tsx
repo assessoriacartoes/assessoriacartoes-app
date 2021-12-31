@@ -22,14 +22,15 @@ export default function Login() {
       if (response.data.success) {
         if (response.data.cliente.tipoDeUsuario === 1) {
           console.log("e certio")
-          localStorage.setItem('admin', JSON.stringify(response.data));
+          localStorage.setItem('user', JSON.stringify(response.data.cliente));
           navigate('/admin')
           return
         }
-        localStorage.setItem('user', response.data);
+        localStorage.setItem('user', JSON.stringify(response.data.cliente));
         navigate('/')
         return
       }
+
       toast.error(`${response.data.messageError}`)
     })
       .catch(function (error) {
