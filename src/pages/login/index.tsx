@@ -6,28 +6,30 @@ import { toast } from 'react-toastify'
 import { Link, useNavigate } from "react-router-dom"
 import api from '../../service/api'
 
+interface props {
+  setIsAuth?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export type LoginForm = {
   email: string,
   senha: string,
 }
 
-export default function Login() {
+const Login: React.FC<props> = ({ setIsAuth }) => {
   const navigate = useNavigate();
 
   const onFinish = async (values: LoginForm) => {
-    console.log("values", values)
-
     await api.post(`api/login`, values).then(function (response) {
-      console.log("response", response)
       if (response.data.success) {
         if (response.data.cliente.tipoDeUsuario === 1) {
-          console.log("e certio")
           localStorage.setItem('user', JSON.stringify(response.data.cliente));
-          navigate('/admin')
+          navigate('/')
           return
         }
         localStorage.setItem('user', JSON.stringify(response.data.cliente));
         navigate('/')
+        if (setIsAuth)
+          setIsAuth(true)
         return
       }
 
@@ -86,3 +88,5 @@ export default function Login() {
     </S.Container>
   );
 };
+
+export default Login;

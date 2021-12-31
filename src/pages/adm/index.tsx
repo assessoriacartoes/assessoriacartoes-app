@@ -31,7 +31,7 @@ export type SaveNewClientForm = {
   id: any
 }
 
-export default function Adm() {
+const Adm: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [cliente, setCliente] = useState<SaveNewClientForm | null>(null);
   const [isSpinning, setIsSpinning] = useState<boolean>(false)
@@ -110,9 +110,6 @@ export default function Adm() {
           </S.ContainerImage>
         </Header>
         <Content style={{ backgroundColor: "white", padding: '50px 50px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
-          {/* <S.ContainerImage>
-          <img src={"data:image/png;base64," + cliente?.img} alt="logo" />
-        </S.ContainerImage> */}
           <Breadcrumb style={{ margin: '16px 0' }}>
           </Breadcrumb>
           <S.SiteLayoutContent>
@@ -183,12 +180,5 @@ export default function Adm() {
 
   )
 }
-// conciliador: null
-// email: "implantacao@assessoriacartoes.com.br"
-// extensaoLogo: null
-// id: 1
-// img: null
-// nomeArquivoLogo: null
-// password: "lg182030"
-// powerBi: null
-// tipoDeUsuario: 1
+
+export default Adm;

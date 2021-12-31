@@ -15,7 +15,7 @@ export type User = {
   powerBi: string
   tipoDeUsuario: number
 }
-export default function Home() {
+const Home: React.FC = () => {
   const currentUser: any | string = JSON.parse(localStorage.getItem('user') || '{}')
 
 
@@ -49,3 +49,5 @@ export default function Home() {
     </Layout>
   )
 }
+
+export default Home;
