@@ -1,27 +1,29 @@
-import { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Adm from './pages/adm'
+import Admin from './pages/admin'
 import Home from './pages/home'
 import Login from './pages/login'
 import PrivateRoute from './routes/PrivateRoute'
-import PublicRoute from './routes/PublicRoute'
 
 export default function App() {
-  const [isAuth, setIsAuth] = useState(false);
+  function isAuthorized(): boolean {
+    const tipoDeUsuario = localStorage.getItem('user')
+    return tipoDeUsuario ? true : false;
+  }
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={() => <Login setIsAuth={setIsAuth} />} />
-        <PrivateRoute isAuth={isAuth} path='/admin' element={Adm}/>
-      </Routes>
+      <Fragment>
+        <Routes>
+          <Route path='/' element={<PrivateRoute isAuth={isAuthorized()} />}>
+            <Route path='/home' element={<Home />} />
+            <Route path='/admin' element={<Admin />} />
+          </Route>
+          <Route path='/login' element={<Login />} />
+
+          <Route path='*' element={<h1>Rota não encontrada</h1>} />
+        </Routes>
+      </Fragment>
     </Router>
   )
 }
-
-
-
-
-{/* <PublicRoute component={Home} path="/" exact />
-        <PublicRoute component={Login} path="/login" exact />
-        <PrivateRoute component={Home} path="/" exact /> */}

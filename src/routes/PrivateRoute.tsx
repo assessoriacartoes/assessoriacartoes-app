@@ -1,18 +1,12 @@
 import React from 'react';
-import { Route, RouteProps, Navigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import Login from '../pages/login';
+import { Navigate, Outlet, RouteProps } from 'react-router-dom';
 
 interface Props extends RouteProps {
     isAuth: boolean;
 }
 
-const PrivateRoute = ({ isAuth, ...routeProps }: Props) => {
-    {console.log('isauth', isAuth)}
-    if (isAuth) {
-        return <Route {...routeProps} />;
-    }
-    return <Login />;
+const PrivateRoute = ({ isAuth }: Props) => {
+    return isAuth ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoute

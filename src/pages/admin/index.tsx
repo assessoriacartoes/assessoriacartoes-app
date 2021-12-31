@@ -1,14 +1,22 @@
 import { useState } from 'react';
-import { Layout, Breadcrumb } from 'antd';
-import * as S from './styles'
-import { Upload, Form, Input, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import { Typography } from 'antd';
+import {
+  Spin,
+  Layout,
+  Breadcrumb,
+  Typography,
+  Upload,
+  Form,
+  Input,
+  Button
+} from 'antd';
+import { LoadingOutlined, UploadOutlined } from '@ant-design/icons';
 import { toast } from 'react-toastify'
+
 import Table from '../../components/Table'
+
 import api from '../../service/api'
-import { Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
+import * as S from './styles'
+
 const layout = {
   labelCol: {
     span: 8,
@@ -19,7 +27,6 @@ const layout = {
 };
 
 const { Title } = Typography;
-
 const { Header, Content } = Layout;
 
 export type SaveNewClientForm = {
@@ -31,7 +38,7 @@ export type SaveNewClientForm = {
   id: any
 }
 
-const Adm: React.FC = () => {
+const Admin: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<any>(null);
   const [cliente, setCliente] = useState<SaveNewClientForm | null>(null);
   const [isSpinning, setIsSpinning] = useState<boolean>(false)
@@ -72,19 +79,19 @@ const Adm: React.FC = () => {
 
 
   async function SaveLogo(id: any) {
-
     const archive = new FormData();
     archive.append("arquivo", selectedFile);
 
-    await api.post(`/api/cliente/uploadLogo/${id}`, archive).then(function (response) {
-      setIsSpinning(false)
-      window.location.reload();
-      toast.success(`Cliente criado com sucesso`)
-      setCliente(response.data);
+    await api.post(`/api/cliente/uploadLogo/${id}`, archive)
+      .then(function (response) {
+        setIsSpinning(false)
+        window.location.reload();
+        toast.success(`Cliente criado com sucesso`)
+        setCliente(response.data);
 
-    }).catch(function (error) {
-      toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
-    });
+      }).catch(function (error) {
+        toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
+      });
   }
 
   const handleupload = (file: any, fileList: any) => {
@@ -181,4 +188,4 @@ const Adm: React.FC = () => {
   )
 }
 
-export default Adm;
+export default Admin;

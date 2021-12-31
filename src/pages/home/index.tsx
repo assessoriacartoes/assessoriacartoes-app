@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { Layout } from 'antd';
 import * as S from './styles'
 
@@ -15,9 +14,9 @@ export type User = {
   powerBi: string
   tipoDeUsuario: number
 }
+
 const Home: React.FC = () => {
   const currentUser: any | string = JSON.parse(localStorage.getItem('user') || '{}')
-
 
   return (
     <Layout className="layout" >

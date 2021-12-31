@@ -6,30 +6,23 @@ import { toast } from 'react-toastify'
 import { Link, useNavigate } from "react-router-dom"
 import api from '../../service/api'
 
-interface props {
-  setIsAuth?: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 export type LoginForm = {
   email: string,
   senha: string,
 }
 
-const Login: React.FC<props> = ({ setIsAuth }) => {
+const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const onFinish = async (values: LoginForm) => {
     await api.post(`api/login`, values).then(function (response) {
       if (response.data.success) {
         if (response.data.cliente.tipoDeUsuario === 1) {
-          localStorage.setItem('user', JSON.stringify(response.data.cliente));
-          navigate('/')
+          localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
+          navigate('/home')
           return
         }
-        localStorage.setItem('user', JSON.stringify(response.data.cliente));
-        navigate('/')
-        if (setIsAuth)
-          setIsAuth(true)
+        localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
         return
       }
 
