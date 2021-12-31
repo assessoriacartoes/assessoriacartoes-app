@@ -16,8 +16,10 @@ export default function Home() {
   const powerBi = `https://app.powerbi.com/view?r=eyJrIjoiMjRmZDVlZDYtZDM0MS00ODI1LTgxZTYtYjc2YWVjYWIyYzFhIiwidCI6IjQ2NTg4OGU5LWQzMjUtNDc5MC05ZTU3LTE1NGVhOWJhMWYxYiJ9&pageName=ReportSection`
   useEffect(() => {
     async function getPowerBi() {
-      await api.get(`assessoria`).then(function (response) {
-
+      await api.get(`/assessoria`).then(function (response) {
+        // setData(response)
+        console.log("response", response)
+        // toast.success(`Cliente criado com sucesso`)
       })
         .catch(function (error) {
           toast.error(`Um erro inesperado aconteceu ${error.response.status}`)

@@ -3,7 +3,7 @@ import { Form, Input, Button } from 'antd';
 import * as S from './styles'
 import { Typography } from 'antd';
 import { toast } from 'react-toastify'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import api from '../../service/api'
 
 export type LoginForm = {
@@ -33,9 +33,9 @@ export default function Login() {
       toast.error(`${response.data.messageError}`)
     })
       .catch(function (error) {
+        console.log('error', error.message)
         toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
       });
-
   };
 
   const { Title } = Typography;
@@ -72,6 +72,8 @@ export default function Login() {
         >
           <Input.Password placeholder="Senha" />
         </Form.Item>
+        <br />
+        <br />
         <Form.Item
           style={{ display: "flex", justifyContent: "center", borderRadius: '2px' }}
         >
