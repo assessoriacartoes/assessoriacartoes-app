@@ -6,7 +6,7 @@ interface Props extends RouteProps {
 }
 
 const PrivateRoute = ({ isAuth }: Props) => {
-    return isAuth ? <Outlet /> : <Navigate to="/login" />;
+    return isAuth ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default PrivateRoute

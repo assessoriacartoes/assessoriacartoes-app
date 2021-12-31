@@ -15,11 +15,11 @@ export default function App() {
     <Router>
       <Fragment>
         <Routes>
-          <Route path='/' element={<PrivateRoute isAuth={isAuthorized()} />}>
-            <Route path='/home' element={<Home />} />
-            <Route path='/admin' element={<Admin />} />
+          <Route path='/' element={<Login />} />
+          <Route path='/home' element={<PrivateRoute isAuth={isAuthorized()} />}>
+            <Route path='/home/dash' element={<Home />} />
+            <Route path='/home/admin' element={<Admin />} />
           </Route>
-          <Route path='/login' element={<Login />} />
 
           <Route path='*' element={<h1>Rota não encontrada</h1>} />
         </Routes>
