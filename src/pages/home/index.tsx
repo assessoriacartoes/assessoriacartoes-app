@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import api from '../../service/api';
 import * as S from './styles'
 
 const { Header, Content, Footer } = Layout;
@@ -15,7 +16,7 @@ export default function Home() {
   const powerBi = `https://app.powerbi.com/view?r=eyJrIjoiMjRmZDVlZDYtZDM0MS00ODI1LTgxZTYtYjc2YWVjYWIyYzFhIiwidCI6IjQ2NTg4OGU5LWQzMjUtNDc5MC05ZTU3LTE1NGVhOWJhMWYxYiJ9&pageName=ReportSection`
   useEffect(() => {
     async function getPowerBi() {
-      await axios.get(`http://212.1.214.170:5000/assessoria`).then(function (response) {
+      await api.get(`/assessoria`).then(function (response) {
         // setData(response)
         console.log("response", response)
         // toast.success(`Cliente criado com sucesso`)

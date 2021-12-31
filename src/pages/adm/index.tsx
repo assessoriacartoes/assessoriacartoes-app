@@ -1,12 +1,11 @@
+import { useState } from 'react';
 import { Layout, Breadcrumb } from 'antd';
 import * as S from './styles'
 import { Upload, Form, Input, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
-import axios from 'axios';
+import api from '../../service/api';
 import { toast } from 'react-toastify'
-import { useNavigate } from "react-router-dom"
-import { Link } from 'react-router-dom';
 import Table from '../../components/Table'
 
 const layout = {
@@ -17,33 +16,48 @@ const layout = {
     span: 16,
   },
 };
-/* eslint-disable no-template-curly-in-string */
+
 const { Title } = Typography;
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 export type SaveNewClientForm = {
   email: string,
   password: string,
-  powerBi: boolean
-  ClientImage: string
+  powerBi: boolean,
+  clientImage: any,
+  img: any,
+  id: any
 }
 
 export default function Adm() {
-  const navigate = useNavigate();
-
-  const year = new Date();
+  const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [cliente, setCliente] = useState<SaveNewClientForm|null>(null);
 
   async function onFinish(values: SaveNewClientForm) {
-    console.log("values new clieent", values);
-    await axios.post(`api`, values).then(function (response) {
-      toast.success(`Cliente criado com sucesso`)
-      navigate("/")
-    })
-      .catch(function (error) {
-        toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
-      });
+    await api.post(`/api/cliente`, values).then(function (response) {
+      SaveLogo(response.data.id)
+    }).catch(function (error) {
+      toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
+    });
   };
+
+  async function SaveLogo(id: any) {
+    const archive = new FormData();
+    archive.append("arquivo", selectedFile);
+
+    await api.post(`/api/cliente/uploadLogo/${id}`, archive).then(function (response) {
+      toast.success(`Cliente criado com sucesso`)
+      setCliente(response.data);
+      //navigate("/")
+    }).catch(function (error) {
+      toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
+    });
+  }
+
+  const handleupload = (file: any, fileList: any) => {
+    setSelectedFile(file);
+  }
 
   return (
     <Layout className="layout">
@@ -61,6 +75,9 @@ export default function Adm() {
         </S.ContainerImage>
       </Header>
       <Content style={{ backgroundColor: "white", padding: '50px 50px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
+        <S.ContainerImage>
+          <img src={"data:image/png;base64," + cliente?.img} alt="logo" />
+        </S.ContainerImage>
         <Breadcrumb style={{ margin: '16px 0' }}>
         </Breadcrumb>
         <S.SiteLayoutContent>
@@ -110,6 +127,8 @@ export default function Adm() {
               >
                 <Upload
                   listType="picture"
+                  beforeUpload={handleupload}
+                  accept=".png"
                 >
                   <Button icon={<UploadOutlined />}>Upload </Button>
                 </Upload>
