@@ -21,7 +21,7 @@ const Login: React.FC = () => {
 
         if (response.data.cliente.tipoDeUsuario === 1) {
           localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
-          navigate('/home')
+          navigate('/admin')
           return
         }
         localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));

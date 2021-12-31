@@ -17,8 +17,11 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Login />} />
           <Route path='/home' element={<PrivateRoute isAuth={isAuthorized()} />}>
-            <Route path='/home/dash' element={<Home />} />
-            <Route path='/home/admin' element={<Admin />} />
+            <Route path='/home' element={<Home />} />
+          </Route>
+
+          <Route path='/admin' element={<PrivateRoute isAuth={isAuthorized()} />}>
+            <Route path='/admin' element={<Admin />} />
           </Route>
 
           <Route path='*' element={<h1>Rota não encontrada</h1>} />
