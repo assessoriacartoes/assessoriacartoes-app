@@ -17,12 +17,15 @@ const Login: React.FC = () => {
   const onFinish = async (values: LoginForm) => {
     await api.post(`api/login`, values).then(function (response) {
       if (response.data.success) {
+        console.log("response", response)
+
         if (response.data.cliente.tipoDeUsuario === 1) {
           localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
           navigate('/home')
           return
         }
         localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
+        navigate('/home')
         return
       }
 
