@@ -3,11 +3,10 @@ import * as S from './styles'
 import { Upload, Form, Input, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
-import axios from 'axios';
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom"
-import { Link } from 'react-router-dom';
 import Table from '../../components/Table'
+import api from '../../service/api'
 
 const layout = {
   labelCol: {
@@ -20,7 +19,7 @@ const layout = {
 /* eslint-disable no-template-curly-in-string */
 const { Title } = Typography;
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 export type SaveNewClientForm = {
   email: string,
@@ -36,9 +35,10 @@ export default function Adm() {
 
   async function onFinish(values: SaveNewClientForm) {
     console.log("values new clieent", values);
-    await axios.post(`api`, values).then(function (response) {
-      toast.success(`Cliente criado com sucesso`)
-      navigate("/")
+    await api.post(`api/cliente`, values).then(function (response) {
+      console.log("response", response)
+
+      toast.error(`${response.data.messageError}`)
     })
       .catch(function (error) {
         toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
@@ -81,7 +81,7 @@ export default function Adm() {
                 label="Senha"
                 rules={[{ required: true, message: 'Por favor insira a senha' }]}
               >
-                <Input type="email" />
+                <Input type="text" />
               </Form.Item>
 
               <Form.Item

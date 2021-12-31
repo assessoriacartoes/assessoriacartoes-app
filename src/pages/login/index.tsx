@@ -1,25 +1,36 @@
-import React from 'react';
 import './index.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import * as S from './styles'
 import { Typography } from 'antd';
-import axios from 'axios';
 import { toast } from 'react-toastify'
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import api from '../../service/api'
 
 export type LoginForm = {
   email: string,
-  password: string,
+  senha: string,
 }
 
 export default function Login() {
   const navigate = useNavigate();
 
   const onFinish = async (values: LoginForm) => {
-    console.log("response", values)
+    console.log("values", values)
 
-    await axios.post(`api`,).then(function (response) {
-      navigate("/")
+    await api.post(`api/login`, values).then(function (response) {
+      console.log("response", response)
+      if (response.data.success) {
+        if (response.data.cliente.tipoDeUsuario === 1) {
+          console.log("e certio")
+          localStorage.setItem('admin', JSON.stringify(response.data));
+          navigate('/admin')
+          return
+        }
+        localStorage.setItem('user', response.data);
+        navigate('/')
+        return
+      }
+      toast.error(`${response.data.messageError}`)
     })
       .catch(function (error) {
         toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
@@ -55,18 +66,12 @@ export default function Login() {
         </Form.Item>
 
         <Form.Item
-          name="password"
+          name="senha"
           style={{ display: "flex", justifyContent: "center" }}
           rules={[{ required: true, message: 'Insira sua senha' }]}
         >
           <Input.Password placeholder="Senha" />
         </Form.Item>
-
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Mantenha-me conectado</Checkbox>
-        </Form.Item>
-        <br />
-        <br />
         <Form.Item
           style={{ display: "flex", justifyContent: "center", borderRadius: '2px' }}
         >
