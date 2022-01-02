@@ -17,11 +17,6 @@ export type User = {
 
 const Home: React.FC = () => {
   const currentUser: any | string = JSON.parse(localStorage.getItem('cliente') || '{}')
-  console.log(currentUser)
-  if (typeof window !== 'undefined') {
-    console.log("currentUser", currentUser)
-
-  }
 
   return (
     <Layout className="layout" >
@@ -38,7 +33,7 @@ const Home: React.FC = () => {
           <img src={"data:image/png;base64," + currentUser?.img} alt="logo" />
         </S.ContainerImage>
         <S.ContainerWord>
-          Análise de dados
+          Análise de Dados
         </S.ContainerWord>
         <S.MenuContainer>
           <span><a target="_blank" rel="noopener noreferrer" href={`${currentUser.conciliador}`} >CONCILIADOR</a></span>

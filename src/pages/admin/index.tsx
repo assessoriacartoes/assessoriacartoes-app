@@ -50,14 +50,12 @@ const Admin: React.FC = () => {
     const temporario = urlYoutube.split(' ')
     temporario.forEach((elemento, index) => {
       if (elemento === "next") {
-        console.log(temporario[index + 1].replace('"', ''))
         values.powerBi = temporario[index + 1].replace('"', '')
       }
     })
 
     setIsSpinning(true)
     await api.post(`/api/cliente`, values).then(function (response) {
-      console.log("response", response)
       SaveLogo(response.data.cliente.id)
     }).catch(function (error) {
       toast.error(`Um erro inesperado aconteceu ${error.response.status}`)

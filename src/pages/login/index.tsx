@@ -14,16 +14,12 @@ export type LoginForm = {
 const Login: React.FC = () => {
   let history = useHistory();
   const onFinish = async (values: LoginForm) => {
-    console.log(values)
     await api.post(`api/login`, values).then(function (response) {
-      console.log(response)
 
       if (response.data.cliente.tipoDeUsuario === 1) {
-        console.log(response.data.cliente.tipoDeUsuario === 1)
 
         localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
         localStorage.setItem('cliente', JSON.stringify(response.data.cliente));
-        console.log("vai entrar adim")
         history.push("/admin")
         return
       }
@@ -32,7 +28,6 @@ const Login: React.FC = () => {
       history.push("/home")
     })
       .catch(function (error) {
-        console.log('error', error.message)
         toast.error(`Um erro inesperado aconteceu ${error.response.status}`)
       });
   };
@@ -40,7 +35,6 @@ const Login: React.FC = () => {
   const { Title } = Typography;
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log('Failed:', errorInfo);
   };
 
   return (

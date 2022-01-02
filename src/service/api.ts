@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://assessoriacartoes-api.assessoriacartoes.com.br:5000/'
+    baseURL: 'https://assessoria-cartoes-api.herokuapp.com/'
 });
 
 export default api;
