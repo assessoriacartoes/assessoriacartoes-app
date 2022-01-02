@@ -1,12 +1,17 @@
+
 import React from 'react';
-import { Navigate, Outlet, RouteProps } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-interface Props extends RouteProps {
-    isAuth: boolean;
-}
-
-const PrivateRoute = ({ isAuth }: Props) => {
-    return isAuth ? <Outlet /> : <Navigate to="/" />;
+const PrivateRoute = ({ component: Component, ...rest }: any) => {
+    const user: any = localStorage.getItem('user')
+    console.log(user == 1, " private route")
+    return (
+        <Route {...rest} render={props => (
+            user == 1 ?
+                <Component {...props} />
+                : <Redirect to="/" />
+        )} />
+    );
 };
 
-export default PrivateRoute
+export default PrivateRoute;

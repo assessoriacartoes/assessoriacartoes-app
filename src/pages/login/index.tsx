@@ -3,33 +3,33 @@ import { Form, Input, Button } from 'antd';
 import * as S from './styles'
 import { Typography } from 'antd';
 import { toast } from 'react-toastify'
-import { Link, useNavigate } from "react-router-dom"
+import { Redirect } from 'react-router-dom';
 import api from '../../service/api'
-
+import { useHistory } from "react-router-dom"
 export type LoginForm = {
   email: string,
   senha: string,
 }
 
 const Login: React.FC = () => {
-  const navigate = useNavigate();
-
+  let history = useHistory();
   const onFinish = async (values: LoginForm) => {
+    console.log(values)
     await api.post(`api/login`, values).then(function (response) {
-      if (response.data.success) {
-        console.log("response", response)
+      console.log(response)
 
-        if (response.data.cliente.tipoDeUsuario === 1) {
-          localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
-          navigate('/admin')
-          return
-        }
+      if (response.data.cliente.tipoDeUsuario === 1) {
+        console.log(response.data.cliente.tipoDeUsuario === 1)
+
         localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
-        navigate('/home')
+        localStorage.setItem('cliente', JSON.stringify(response.data.cliente));
+        console.log("vai entrar adim")
+        history.push("/admin")
         return
       }
-
-      toast.error(`${response.data.messageError}`)
+      localStorage.setItem('user', JSON.stringify(response.data.cliente.tipoDeUsuario));
+      localStorage.setItem('cliente', JSON.stringify(response.data.cliente));
+      history.push("/home")
     })
       .catch(function (error) {
         console.log('error', error.message)

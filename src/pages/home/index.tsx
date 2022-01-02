@@ -16,7 +16,12 @@ export type User = {
 }
 
 const Home: React.FC = () => {
-  const currentUser: any | string = JSON.parse(localStorage.getItem('user') || '{}')
+  const currentUser: any | string = JSON.parse(localStorage.getItem('cliente') || '{}')
+  console.log(currentUser)
+  if (typeof window !== 'undefined') {
+    console.log("currentUser", currentUser)
+
+  }
 
   return (
     <Layout className="layout" >
