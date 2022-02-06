@@ -16,6 +16,7 @@ export const ContainerImage = styled.div`
  margin-right: auto;
   margin-left: 10%;
   width: fit-content;
+  height: 60px;
   img{
     width: 160px;
   }

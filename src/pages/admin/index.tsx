@@ -101,41 +101,36 @@ const Admin: React.FC = () => {
   return (
     <Spin indicator={antIcon} spinning={isSpinning}>
       <Layout className="layout">
-        <Header
-          style={{
-            backgroundColor: "#f0f2f5",
-            display: 'flex',
-            height: "auto",
-            maxHeight: "60px",
-            justifyContent: "center",
-            alignItems: "center"
-          }}>
-          <S.ContainerImage>
-            <img src="assessoria.png" alt="logo" />
-          </S.ContainerImage>
-        </Header>
+
         <Content style={{ backgroundColor: "white", padding: '50px 50px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
           </Breadcrumb>
           <S.SiteLayoutContent>
             <S.ContainerTitle>
-              <Title level={3}>Cadastre um novo cliente</Title>
+              <Title level={3}>Cadastre um novo cliente no painel</Title>
             </S.ContainerTitle>
             <S.FormContainer>
               <Form {...layout} name="nest-messages" onFinish={(values) => onFinish(values)} >
+                <Form.Item
+                  name='Nome do Grupo'
+                  label="NomeDoGrupo"
+                  rules={[{ required: true, message: 'Por favor insira o Nome Do Grupo' }]}
+                >
+                  <Input />
+                </Form.Item>
                 <Form.Item
                   name='email'
                   label="E-mail"
                   rules={[{ required: true, message: 'Por favor insira o E-mail' }]}
                 >
-                  <Input type="text" />
+                  <Input />
                 </Form.Item>
                 <Form.Item
                   name='password'
                   label="Senha"
                   rules={[{ required: true, message: 'Por favor insira a senha' }]}
                 >
-                  <Input type="password" />
+                  <Input />
                 </Form.Item>
 
                 <Form.Item

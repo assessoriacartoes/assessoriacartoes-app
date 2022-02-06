@@ -17,7 +17,8 @@ export type User = {
 
 const Home: React.FC = () => {
   const currentUser: any | string = JSON.parse(localStorage.getItem('cliente') || '{}')
-
+  const user: any = localStorage.getItem('user')
+  console.log("user", user)
   return (
     <Layout className="layout" >
       <Header
@@ -30,13 +31,17 @@ const Home: React.FC = () => {
           alignItems: "center"
         }}>
         <S.ContainerImage>
-          <img src={"data:image/png;base64," + currentUser?.img} alt="logo" />
+          {user == 1 ? (
+            <span><a href={`/admin`} >Cadastre um novo cliente</a></span>
+          ) : (<img src={"data:image/png;base64," + currentUser?.img} alt="logo" />)}
         </S.ContainerImage>
         <S.ContainerWord>
           Análise de Dados
         </S.ContainerWord>
+
         <S.MenuContainer>
           <span><a target="_blank" rel="noopener noreferrer" href={`${currentUser.conciliador}`} >CONCILIADOR</a></span>
+
         </S.MenuContainer>
       </Header>
       <Content style={{ backgroundColor: "white" }}>
