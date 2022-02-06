@@ -29,7 +29,7 @@ export const Button = styled.button`
 `
 export const SearchContainer = styled.form`
     display: flex;
-    margin: 0 2rem 0 auto;
+    margin: 0 0 0 0;
     
     svg{
         width: 30px;
@@ -44,8 +44,7 @@ export const DivTable = styled.div`
         width: 90%;
         margin: 0 2rem 0 2rem;
     .ant-btn{
-        margin: 2px;
-        border-radius: 4px;
+       
     }
 
     .ant-table-cell{

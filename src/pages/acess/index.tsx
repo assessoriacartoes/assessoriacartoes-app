@@ -22,6 +22,7 @@ export type User = {
 const Home: React.FC = () => {
   let { id } = useParams<{ id: string }>();
   const [currentUser, setCurrentUser] = useState<User>()
+
   //   async function GetCliente() {
   //     await api.get(`api/cliente/${id}`).then(function (response) {
   //       console.log(response);

@@ -112,8 +112,8 @@ const Admin: React.FC = () => {
             <S.FormContainer>
               <Form {...layout} name="nest-messages" onFinish={(values) => onFinish(values)} >
                 <Form.Item
-                  name='Nome do Grupo'
-                  label="NomeDoGrupo"
+                  name='nomeDoGrupo'
+                  label="Nome do Grupo"
                   rules={[{ required: true, message: 'Por favor insira o Nome Do Grupo' }]}
                 >
                   <Input />
