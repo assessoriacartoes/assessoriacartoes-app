@@ -22,19 +22,19 @@ export type User = {
 const Home: React.FC = () => {
   let { id } = useParams<{ id: string }>();
   const [currentUser, setCurrentUser] = useState<User>()
+  useEffect(() => {
+    async function GetCliente() {
+      await api.get(`api/cliente/${id}`).then(function (response) {
+        console.log(response);
+        setCurrentUser(response.data)
+      })
+        .catch(function (error) {
+          console.log(error);
 
-  //   async function GetCliente() {
-  //     await api.get(`api/cliente/${id}`).then(function (response) {
-  //       console.log(response);
-  //            setCurrentUser(response.data)
-  //     })
-  //       .catch(function (error) {
-  //         console.log(error);
-
-  //       });
-  //   };
-  //   GetCliente()
-  // }, [])
+        });
+    };
+    GetCliente()
+  }, [])
 
 
   const user: any = localStorage.getItem('user')
