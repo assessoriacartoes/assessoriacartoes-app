@@ -116,14 +116,15 @@ export default function TableSimuled() {
 
     useEffect(() => {
         async function getSimulateds() {
-            console.log("teste deu certp", nome)
-            await api.get(`api/cliente/filter/${nome}`, {
+            await api.get(`api/cliente/filter`, {
+                params: { filter: nome }
             }).then(function (response) {
                 console.log("params", response)
                 setData(response.data);
                 setIsLoading(false)
             })
                 .catch(function (error) {
+                    setIsLoading(false)
                 });
         }
         getSimulateds()
@@ -136,13 +137,11 @@ export default function TableSimuled() {
         setIsLoading(true)
         setParams(e.target.value)
     }
+
     const onSearch = (value: SetStateAction<string>) => { setParams(value) };
 
-    // < img src = { "data:image/png;base64," + currentUser?.img } alt = "logo" />
-
     return (<>
-        <S.Tools>
-        </S.Tools>
+        <S.Tools />
         <S.DivTable>
             <S.Tools>
                 <S.SearchContainer>
