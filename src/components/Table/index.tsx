@@ -24,11 +24,11 @@ export default function TableSimuled() {
     let history = useHistory();
 
     function Acess(id: number) {
-        // history.push(`/acessar/${id}`)
-        const win = window.open(`/acessar/${id}`, "_blank");
-        if (win != null) {
-            win.focus();
-        }
+        history.push(`/acessar/${id}`, "_blank")
+        // const win = window.open(`/acessar/${id}`, "_blank");
+        // if (win != null) {
+        //     win.focus();
+        // }
     }
 
     const columns = [
