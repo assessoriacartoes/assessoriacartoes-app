@@ -24,7 +24,8 @@ export default function TableSimuled() {
     let history = useHistory();
 
     function Acess(id: number) {
-        history.push(`/acessar/${id}`, "_blank")
+        console.log("kkdjfksjdkfjskd")
+        
         // const win = window.open(`/acessar/${id}`, "_blank");
         // if (win != null) {
         //     win.focus();
@@ -61,9 +62,8 @@ export default function TableSimuled() {
             width: '20%',
             render: (id: number) => (
                 <>
-                    <a target="_blank" rel="noopener noreferrer" href="">
+                    <a target="_blank" rel="noopener noreferrer" href={`/acessar/${id}`}>
                         <Button
-                            onClick={() => Acess(id)}
                             type="primary"
                             style={{ margin: "2px", borderRadius: "4px" }}
                         >Acessar
