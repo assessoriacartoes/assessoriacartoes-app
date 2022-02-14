@@ -27,6 +27,7 @@ export default function TableSimuled() {
             title: 'Cliente',
             dataIndex: 'img',
             key: 'img',
+            width: 150,
             render: (img) => (<img style={{ width: '100px' }} src={"data:image/png;base64," + img} alt="logo" />
             )
         },
@@ -39,11 +40,13 @@ export default function TableSimuled() {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
+            width: 300,
         },
         {
             title: 'Senha',
             dataIndex: 'password',
             key: 'password',
+            width: 100,
         },
         {
             title: '',
